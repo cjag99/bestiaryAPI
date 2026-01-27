@@ -33,4 +33,16 @@ Esta API RESTful es una práctica de Laravel 12 para la asignatura de PHP/DAW. P
    ```bash
    composer install
    ```
-3. Cambie las variables del fichero .env:
+3. Crea el fichero ``.env`` con el siguiente comando:
+   ```bash
+   cp .env.example .env
+   ```
+5. Cambie las variables de entorno de conexión a base de datos del fichero ``.env`` siguiendo los ejemplos de ``.env.example``:
+   ```.env
+   DB_CONNECTION=mysql
+   DB_HOST=your_host
+   DB_PORT=your_port
+   DB_DATABASE=your_database
+   DB_USERNAME=your_usernamme
+   DB_PASSWORD=your_password
+   ```
