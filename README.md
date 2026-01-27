@@ -1,4 +1,4 @@
-<h3 align="center">API RESTFUL - Bestiario de rol clásico</h3>
+<h1 align="center">API RESTFUL - Bestiario de rol clásico</h1>
 
 ## Descripción
 Esta API RESTful es una práctica de Laravel 12 para la asignatura de PHP/DAW. Permite gestionar un bestiario de criaturas del rol clásico con operaciones CRUD (crear, leer, actualizar y eliminar criaturas) y autenticación mediante ``Laravel Sanctum (token based)``.
@@ -27,4 +27,10 @@ Esta API RESTful es una práctica de Laravel 12 para la asignatura de PHP/DAW. P
 ## Instalación
 1. Clone el repositorio:
    ```bash
-   git clone 
+   git clone https://github.com/cjag99/bestiaryAPI.git
+   ```
+2. Instale dependencias:
+   ```bash
+   composer install
+   ```
+3. Cambie las variables del fichero .env:
