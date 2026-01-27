@@ -46,3 +46,11 @@ Esta API RESTful es una práctica de Laravel 12 para la asignatura de PHP/DAW. P
    DB_USERNAME=your_usernamme
    DB_PASSWORD=your_password
    ```
+6. Realizar la migración de base de datos y el sembrado de datos de ejemplo para la api:
+   ```bash
+   php artisan migrate --seed
+    ```
+7. Con esto estaría todo listo. Solo quedaría iniciar la API con el comando:
+   ```bash
+   php artisan serve
+   ```
