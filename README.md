@@ -144,6 +144,21 @@ sequenceDiagram
     }
     ``` 
     + Captura de pantalla:
+    
+<table align="center">
+<tr>
+<td align="center">
+<img src="resources/images/loginok.jpg" width="400" height="300" />
+<br>
+<strong>Respuesta exitosa</strong>
+</td>       
+<td align="center">
+<img src="resources/images/loginfail.jpg" width="400" height="300"  />
+<br>
+<strong>Respuesta de error</strong>
+</td>
+</tr>
+</table>
 
 * **GET /api/bestiaries:** 
     + Descripción: Obtiene la lista de criaturas del bestiario. Permite filtrar mediante parámetros de consulta.
@@ -182,6 +197,20 @@ sequenceDiagram
     }
     ```
     + Captura de pantalla:  
+    <table align="center">
+    <tr>
+    <td align="center">
+    <img src="resources/images/beastsok.jpg" width="400" height="300" />
+    <br>
+    <strong>Respuesta exitosa</strong>
+    </td>
+    <td align="center">         
+    <img src="resources/images/beastsfail.jpg" width="400" height="300"  />
+    <br>            
+    <strong>Respuesta de error</strong>
+    </td>
+    </tr>
+    </table>
 * **GET /api/bestiaries/{id}:** 
     + Descripción: Obtiene los detalles de una criatura específica.
     + Parámetros de ruta:
@@ -209,7 +238,20 @@ sequenceDiagram
     }
     ```
     + Captura de pantalla:
-
+    <table align="center">
+    <tr>
+    <td align="center">
+    <img src="resources/images/beastIdok.jpg" width="400" height="300" />
+    <br>
+    <strong>Respuesta exitosa</strong>
+    </td>
+    <td align="center">         
+    <img src="resources/images/beastIdfail.jpg" width="400" height=300 />
+    <br>    
+    <strong>Respuesta de error</strong>
+    </td>
+    </tr>
+    </table>
 * **POST /api/bestiaries:** 
     + Descripción: Crea una nueva criatura en el bestiario.
     + Parámetros del cuerpo (JSON):
@@ -245,7 +287,20 @@ sequenceDiagram
     }
     ```
     + Captura de pantalla:  
-
+    <table align="center">
+    <tr>
+    <td align="center">
+    <img src="resources/images/createOk.jpg" width="400" height="300" />
+    <br>
+    <strong>Respuesta exitosa</strong>
+    </td>
+    <td align="center">
+    <img src="resources/images/createFail.jpg" width="400" height=300 />
+    <br>    
+    <strong>Respuesta de error</strong>
+    </td>
+    </tr>
+    </table>
 * **PUT /api/bestiaries/{id}:** 
     + Descripción: Actualiza una criatura existente.
     + Parámetros de ruta:
@@ -279,12 +334,26 @@ sequenceDiagram
     }
     ```
     + Captura de pantalla:
+    <table align="center">
+    <tr>
+    <td align="center">
+    <img src="resources/images/updateOk.jpg" width="400" height="300" />
+    <br>
+    <strong>Respuesta exitosa</strong>
+    </td>
+    <td align="center">
+    <img src="resources/images/updateFail.jpg" width="400" height=300 />
+    <br>    
+    <strong>Respuesta de error</strong>
+    </td>
+    </tr>
+    </table>
 
 * **DELETE /api/bestiaries/{id}:** 
     + Descripción: Elimina una criatura del bestiario.  
     + Parámetros de ruta:
         - id (integer, requerido): ID de la criatura a eliminar.
-    + Respuesta exitosa (200 OK):
+    + Respuesta exitosa (204 No Content):
     ```JSON
     {
         "status": 1,
@@ -299,4 +368,17 @@ sequenceDiagram
     }
     ```
     + Captura de pantalla:
-    
+    <table align="center">
+    <tr>
+    <td align="center">
+    <img src="resources/images/deleteok.jpg" width="400" height="300" />
+    <br>
+    <strong>Respuesta exitosa</strong>
+    </td>
+    <td align="center">
+    <img src="resources/images/deletefail.jpg" width="400" height=300" />
+    <br>    
+    <strong>Respuesta de error</strong>
+    </td>
+    </tr>
+    </table>
