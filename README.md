@@ -204,6 +204,11 @@ sequenceDiagram
     <br>
     <strong>Respuesta exitosa</strong>
     </td>
+    <td align="center">
+    <img src="resources/images/beastsfilter.jpg" width="400" height="300"  />
+    <br>    
+    <strong>Respuesta con filtro</strong>
+    </td>
     <td align="center">         
     <img src="resources/images/beastsfail.jpg" width="400" height="300"  />
     <br>            
