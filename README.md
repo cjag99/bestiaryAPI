@@ -124,3 +124,179 @@ sequenceDiagram
     Bestiary-->>Client: 200 OK (JSON)
 ```
 ## Endpoint de la API
+* **POST /api/login:**
+    + Descripción: Autentica al usuario y genera un token Sanctum.
+    + Parámetros: 
+        - email (string, requerido): Correo electrónico del usuario.
+        - password (string, requerido): Contraseña del usuario.
+    + Respuesta exitosa (200 OK):
+    ```JSON
+    {
+        "status": 1,
+        "message": "1|eyJ0eXAiOiJKV1QiLCJh..."
+    }
+    ```
+    + Respuesta de error (401 Unauthorized):
+    ```JSON
+    {
+        "status": 0,
+        "message": "Credenciales inválidas."
+    }
+    ``` 
+    + Captura de pantalla:
+
+* **GET /api/bestiaries:** 
+    + Descripción: Obtiene la lista de criaturas del bestiario. Permite filtrar mediante parámetros de consulta.
+    + Parámetros de consulta (opcional): Vienen definido s en el modelo Bestiary.php:
+    ```php
+    $allowedFilters = [
+            'name',
+            'species',
+            'danger_level',
+            'habitat',
+            'is_hostile',
+        ];
+    ```
+    + Respuesta exitosa (200 OK):
+    ```JSON
+    {
+        "status": 1,
+        "message": "Criaturas obtenidas exitosamente.",
+        "data": [
+            {
+                "id": 1,
+                "name": "Criatura 1",
+                "species": "Especie 1",
+                "danger_level": "Bajo",
+                "habitat": "Selva",
+                "is_hostile": false
+            },
+            ...
+        ]
+    }
+    ```
+    + Respuesta de error (401 Unauthorized):
+    ```JSON
+    {
+        "message": "Unauthenticated." 
+    }
+    ```
+    + Captura de pantalla:  
+* **GET /api/bestiaries/{id}:** 
+    + Descripción: Obtiene los detalles de una criatura específica.
+    + Parámetros de ruta:
+        - id (integer, requerido): ID de la criatura.
+    + Respuesta exitosa (200 OK):
+    ```JSON
+    {
+        "status": 1,
+        "message": "Criatura obtenida exitosamente.",
+        "data": {
+            "id": 1,
+            "name": "Criatura 1",
+            "species": "Especie 1",
+            "danger_level": "Bajo", 
+            "habitat": "Selva",     
+            "is_hostile": false
+        }
+    }
+    ```
+    + Respuesta de error (404 Not Found):
+    ```JSON
+    {
+        "status": 0,
+        "message": "Criatura no encontrada."
+    }
+    ```
+    + Captura de pantalla:
+
+* **POST /api/bestiaries:** 
+    + Descripción: Crea una nueva criatura en el bestiario.
+    + Parámetros del cuerpo (JSON):
+        - name (string, requerido): Nombre de la criatura.
+        - species (string, requerido): Especie de la criatura.
+        - danger_level (string, requerido): Nivel de peligro (Bajo, Medio, Alto).
+        - habitat (string, requerido): Hábitat natural de la criatura.
+        - is_hostile (boolean, requerido): Indica si la criatura es hostil.
+    + Respuesta exitosa (201 Created):
+    ```JSON
+    {
+        "status": 1,
+        "message": "Criatura creada exitosamente.",
+        "data": {
+            "id": 2,
+            "name": "Criatura 2",
+            "species": "Especie 2",
+            "danger_level": "Medio",       
+            "habitat": "Selva",
+            "is_hostile": true
+        }
+    }
+    ```
+    + Respuesta de error (422 Unprocessable Entity):
+    ```JSON
+    {
+        "status": 0,
+        "message": "Error de validación.",
+        "errors": {     
+            "name": ["El campo nombre es obligatorio."],
+            ...
+        }
+    }
+    ```
+    + Captura de pantalla:  
+
+* **PUT /api/bestiaries/{id}:** 
+    + Descripción: Actualiza una criatura existente.
+    + Parámetros de ruta:
+        - id (integer, requerido): ID de la criatura a actualizar.
+    + Parámetros del cuerpo (JSON):
+        - name (string, opcional): Nombre de la criatura.
+        - species (string, opcional): Especie de la criatura.
+        - danger_level (string, opcional): Nivel de peligro (Bajo, Medio, Alto).
+        - habitat (string, opcional): Hábitat natural de la criatura.
+        - is_hostile (boolean, opcional): Indica si la criatura es hostil.
+    + Respuesta exitosa (200 OK):
+    ```JSON
+    {
+        "status": 1,       
+        "message": "Criatura actualizada exitosamente.",
+        "data": {
+            "id": 1,
+            "name": "Criatura 1 Actualizada",
+            "species": "Especie 1",
+            "danger_level": "Alto",       
+            "habitat": "Montaña",
+            "is_hostile": true
+        }
+    }
+    ```
+    + Respuesta de error (404 Not Found):
+    ```JSON
+    {
+        "status": 0,
+        "message": "Criatura no encontrada."
+    }
+    ```
+    + Captura de pantalla:
+
+* **DELETE /api/bestiaries/{id}:** 
+    + Descripción: Elimina una criatura del bestiario.  
+    + Parámetros de ruta:
+        - id (integer, requerido): ID de la criatura a eliminar.
+    + Respuesta exitosa (200 OK):
+    ```JSON
+    {
+        "status": 1,
+        "message": "Criatura eliminada exitosamente."
+    }
+    ```
+    + Respuesta de error (404 Not Found):
+    ```JSON
+    {
+        "status": 0,
+        "message": "Criatura no encontrada."
+    }
+    ```
+    + Captura de pantalla:
+    
