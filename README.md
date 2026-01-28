@@ -54,3 +54,73 @@ Esta API RESTful es una práctica de Laravel 12 para la asignatura de PHP/DAW. P
    ```bash
    php artisan serve
    ```
+
+## Autenticación con Laravel Sanctum
+Esta API utiliza ``Laravel Sanctum`` para gestionar la autenticación mediante tokens personales, permitiendo proteger las rutas de la API y garantizar que solo los usuarios autenticados puedan acceder a ellas.
+ * **Generación del token:**
+      El proceso de autenticación comienza con una petición al endpoint de login:
+      ```http
+      POST /api/login
+      ```
+      El usuario envía sus credenciales (``email`` y ``password``). Si son correctas, la API genera un token de acceso asociado a ese usuario mediante Sanctum.
+      
+      **Ejemplo de respuesta:**
+      ```JSON
+        {
+            "status":1,
+            "message": "1|eyJ0eXAiOiJKV1QiLCJh..."
+        }
+      ```
+      Este token se almacena en la base de datos y representa una sesión de autenticación independiente del navegador o dispositivo.
+  * **Uso del token en la API:**
+     Para acceder a las rutas protegidas, el cliente debe enviar el token en cada petición HTTP usando el header:
+     ```http
+     Authorization: Bearer {token}
+     ```
+     De esta forma, la API puede identificar al usuario en cada request sin necesidad de sesiones ni cookies.
+* **Protección de rutas:**
+  Las rutas que requieren autenticación están agrupadas bajo el middleware:
+  ```php
+  Route::middleware('auth:sanctum')->group(function () {
+    // rutas protegidas
+    });
+  ```
+  Este middleware valida el token enviado y permite el acceso únicamente si es válido. En caso contrario, la API devuelve una respuesta JSON con código 401 (Unauthenticated).
+* **Ventajas del uso de Sanctum:**
+  + Autenticación stateless (sin sesiones)
+  + Uso de tokens seguros
+  + Ideal para APIs REST
+  + Fácil integración con Laravel
+  + Control de acceso claro y centralizado
+* **Gestión de errores:**
+  Cuando un usuario intenta acceder a una ruta protegida sin un token válido, la API responde con:
+  ```JSON
+  {
+  "message": "Unauthenticated."
+    }
+    ```
+  y un código de estado HTTP 401, garantizando un comportamiento consistente en toda la API.
+
+## Flujo de uso de la API
+```mermaid
+sequenceDiagram
+    participant Client as Cliente (Postman / Frontend)
+    participant API as Laravel API
+    participant Auth as AuthController
+    participant Bestiary as BestiaryController
+    participant DB as Database
+
+    Client->>API: POST /api/login (email, password)
+    API->>Auth: Validar credenciales
+    Auth->>DB: Buscar usuario
+    DB-->>Auth: Usuario válido
+    Auth-->>Client: Token Sanctum
+
+    Client->>API: GET /api/bestiaries
+    Note right of Client: Authorization: Bearer {token}
+    API->>Bestiary: Request autenticada
+    Bestiary->>DB: Obtener criaturas
+    DB-->>Bestiary: Lista de criaturas
+    Bestiary-->>Client: 200 OK (JSON)
+```
+## Endpoint de la API
