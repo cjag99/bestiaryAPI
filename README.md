@@ -123,6 +123,35 @@ sequenceDiagram
     DB-->>Bestiary: Lista de criaturas
     Bestiary-->>Client: 200 OK (JSON)
 ```
+### Usuarios de ejemplo de la API
+Al instalar la API y migrar la base de datos se ejecuta también el fichero ``UserSeeder.php``, el cual va a generar 5 usuarios de ejemplo, con todos los permisos, con los que podrás probar a hacer login e ir generando distintos tokens personales. Los usuarios creados son los siguientes:
+<table>
+    <thead>
+    <tr>
+      <th>Columna</th>
+      <th>Columna</th>
+    </tr>
+  </thead>
+    <tbody>
+        <tr>
+            <td>user0@example.com</td>
+            <td>password0</td>
+        </tr>
+        <tr>
+            <td>user1@example.com</td>
+            <td>password1</td>
+        </tr><tr>
+            <td>user2@example.com</td>
+            <td>password2</td>
+        </tr><tr>
+            <td>user3@example.com</td>
+            <td>password3</td>
+        </tr><tr>
+            <td>user4@example.com</td>
+            <td>password4</td>
+        </tr>
+    </tbody>
+</table>
 ## Endpoint de la API
 * **POST /api/login:**
     + Descripción: Autentica al usuario y genera un token Sanctum.
