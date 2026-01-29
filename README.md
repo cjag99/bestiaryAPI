@@ -37,7 +37,7 @@ Esta API RESTful es una práctica de Laravel 12 para la asignatura de PHP/DAW. P
    ```bash
    cp .env.example .env
    ```
-5. Cambie las variables de entorno de conexión a base de datos del fichero ``.env`` siguiendo los ejemplos de ``.env.example``:
+4. Cambie las variables de entorno de conexión a base de datos del fichero ``.env`` siguiendo los ejemplos de ``.env.example``:
    ```.env
    DB_CONNECTION=mysql
    DB_HOST=your_host
@@ -45,6 +45,10 @@ Esta API RESTful es una práctica de Laravel 12 para la asignatura de PHP/DAW. P
    DB_DATABASE=your_database
    DB_USERNAME=your_usernamme
    DB_PASSWORD=your_password
+   ```
+5. Generar la APP_KEY con el siguiente comando:
+   ```bash
+   php artisan key:generate
    ```
 6. Realizar la migración de base de datos y el sembrado de datos de ejemplo para la api:
    ```bash
